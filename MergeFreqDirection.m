@@ -118,36 +118,36 @@ while MergeStruct_Index <= size(MergedData, 2)
     MergeStruct_Index = MergeStruct_Index + 1;
 end
 
-end
+end % end function
 
 
-% 饼
-% for angleArr_Index = 1 : size(MergeFreqDirection, 2)
-for angleArr_Index = 1 : 28
-    angleArr(angleArr_Index) = MergedData(angleArr_Index).Azimuth;
-end
-[r,theta] = meshgrid(8:9,deg2rad(angleArr));
-x = r.*cos(theta);
-y = r.*sin(theta);
-z(:, 1) = specificDirFreq(1:28)*0.775*250/8192;
-z(:, 2) = specificDirFreq(1:28)*0.775*250/8192;
-surf(x,y,z,'LineStyle','none')
-colormap('jet')
-caxis([-5 5])
-colorbar
-view(2)
-% 绘制每一次测量的频谱图像
-data_num = size(MergedData,2);
-savepath = 'F:\不关我的事\';
-for i = 2764:data_num
-    
-    plot(MergedData(i).data);
-    set(gca,'FontSize',10,'fontname','Arial');
-    title('FFT','FontSize',20,'FontName','Arial');
-    xlabel('Frequency(MHz)','FontSize',18,'FontName','Arial');
-    ylabel('Signal Intensity','FontSize',18,'FontName','Arial');
-    saveas (gcf,strcat(savepath,MergedData(i).time),'jpg');
-    %save(strcat(savepath,save_name(1:13),'CH1_D1_col_buff.mat'),'Ch1');
-    close;
-end
-MergedData(i).time
+% % 饼
+% % for angleArr_Index = 1 : size(MergeFreqDirection, 2)
+% for angleArr_Index = 1 : 28
+%     angleArr(angleArr_Index) = MergedData(angleArr_Index).Azimuth;
+% end
+% [r,theta] = meshgrid(8:9,deg2rad(angleArr));
+% x = r.*cos(theta);
+% y = r.*sin(theta);
+% z(:, 1) = specificDirFreq(1:28)*0.775*250/8192;
+% z(:, 2) = specificDirFreq(1:28)*0.775*250/8192;
+% surf(x,y,z,'LineStyle','none')
+% colormap('jet')
+% caxis([-5 5])
+% colorbar
+% view(2)
+% % 绘制每一次测量的频谱图像
+% data_num = size(MergedData,2);
+% savepath = 'F:\不关我的事\';
+% for i = 2764:data_num
+%     
+%     plot(MergedData(i).data);
+%     set(gca,'FontSize',10,'fontname','Arial');
+%     title('FFT','FontSize',20,'FontName','Arial');
+%     xlabel('Frequency(MHz)','FontSize',18,'FontName','Arial');
+%     ylabel('Signal Intensity','FontSize',18,'FontName','Arial');
+%     saveas (gcf,strcat(savepath,MergedData(i).time),'jpg');
+%     %save(strcat(savepath,save_name(1:13),'CH1_D1_col_buff.mat'),'Ch1');
+%     close;
+% end
+% MergedData(i).time
